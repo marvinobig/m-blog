@@ -6,8 +6,8 @@ from.forms import CreatePostForm
 
 # Create your views here.
 @login_required
-def dashboardView(request, userId):
-    user = get_object_or_404(User, id=userId)
+def dashboardView(request):
+    user = request.user
     userPosts = user.posts.all()
     context = {"user": user, "userPosts": userPosts}
 

@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import RegisterForm
@@ -15,9 +14,8 @@ def registerView(request):
 
             user = User.objects.create_user(username=username, password=password)
             login(request, user)
-            dashboardUrl = reverse('dashboard', kwargs={'userId': user.id})
 
-            return redirect(dashboardUrl)
+            return redirect("dashboard")
         else:
             form = RegisterForm()
             context = {"form": form}
@@ -38,9 +36,9 @@ def loginView(request):
 
         if user is not None:
             login(request, user)
-            dashboardUrl = reverse('dashboard', kwargs={'userId': user.id})
+            nextUrl = request.POST.get('next') or request.GET.get('next') or 'dashboard'
 
-            return redirect(dashboardUrl)
+            return redirect(nextUrl)
         else:
             errMsg = "Invalid credentials"
             context = { "err": errMsg}
