@@ -23,5 +23,5 @@ urlpatterns = [
     path('', views.loginView, name="login"),   
     path('register/', views.registerView, name="register"),  
     path('logout/', views.logoutView, name="logout"),  
-    path('posts/', )
+    path('posts/', include("markdownPosts.urls"))
 ]
