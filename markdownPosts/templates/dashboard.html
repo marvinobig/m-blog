@@ -6,4 +6,16 @@
 {% block content %}
 <h2>Dashboard Content</h2>
 <a href="{% url 'new' %}">Create new post</a>
+
+<section>
+    {% if userPosts %}
+        {% for post in userPosts %}
+        <article>
+            <h3>{{ post.title }}</h3>
+        </article>
+        {% endfor %}
+    {% else %}
+        <h3>No posts have been created by you.</h3>
+    {% endif %}
+</section>
 {% endblock %}
