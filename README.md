@@ -15,7 +15,7 @@ The aim is to create a blog that utilises the markdown format for post formattin
 
 ![project ERD](./.github/mblog-erd.png)
 
-## Project Wireframe
+## Project Wireframes
 
 ### Landing/registration page
 
